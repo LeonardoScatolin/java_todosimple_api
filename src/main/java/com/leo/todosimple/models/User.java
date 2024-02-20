@@ -42,6 +42,7 @@ public class User {
 
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
+    @OneToMany(mappedBy = "user")
     private List<Task> tasks = new ArrayList<Task>();
 
 
