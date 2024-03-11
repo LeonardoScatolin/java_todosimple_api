@@ -28,7 +28,6 @@ public class Task {
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false, updatable = false)
-    @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
     private User user;
 
