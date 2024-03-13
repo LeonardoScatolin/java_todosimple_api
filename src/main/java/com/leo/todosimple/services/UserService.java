@@ -1,7 +1,6 @@
 package com.leo.todosimple.services;
 
 import com.leo.todosimple.models.User;
-import com.leo.todosimple.repositories.TaskRepository;
 import com.leo.todosimple.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +14,6 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private TaskRepository taskRepository;
-
     public User findById(Long id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElseThrow(() -> new RuntimeException("Usuário não encontrado. Id " + id + " Tipo: " + User.class.getName()));
@@ -27,7 +23,6 @@ public class UserService {
     public User create(User obj) {
         obj.setId(null);
         obj = userRepository.save(obj);
-        taskRepository.saveAll(obj.getTasks());
         return obj;
     }
 
